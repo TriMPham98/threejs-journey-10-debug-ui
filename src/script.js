@@ -26,13 +26,15 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 // Debug
-gui.add(mesh.position, "x").min(-3).max(3).step(0.01).name("elevation");
-gui.add(mesh.position, "y").min(-3).max(3).step(0.01);
-gui.add(mesh.position, "z").min(-3).max(3).step(0.01);
+gui.add(mesh.position, "x").min(-3).max(3).step(0.01).name("horizontal");
+gui.add(mesh.position, "y").min(-3).max(3).step(0.01).name("elevation");
+gui.add(mesh.position, "z").min(-3).max(3).step(0.01).name("depth");
 
 gui.add(mesh, "visible");
 
 gui.add(material, "wireframe");
+
+gui.addColor(material, "color");
 
 /**
  * Sizes
