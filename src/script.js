@@ -8,6 +8,13 @@ import * as dat from "lil-gui";
  */
 const gui = new dat.GUI();
 
+const parameters = {
+  color: 0xffffff,
+  spin: () => {
+    gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2 });
+  },
+};
+
 /**
  * Base
  */
@@ -21,7 +28,7 @@ const scene = new THREE.Scene();
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+const material = new THREE.MeshBasicMaterial({ color: parameters.color });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
@@ -35,6 +42,8 @@ gui.add(mesh, "visible");
 gui.add(material, "wireframe");
 
 gui.addColor(material, "color");
+
+gui.add(parameters, "spin");
 
 /**
  * Sizes
